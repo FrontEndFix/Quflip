@@ -1,0 +1,83 @@
+<div class='main-container'>
+    <div class="q-header-list">
+        <div class="q-nav">
+            <div class="q-home" ng-click="vm.routeTo('home')">Home</div>
+            <div class="q-about" ng-click="vm.routeTo('about')">About</div>
+            <div class="q-cart" ng-click="vm.routeTo('list')">Menu</div>
+        </div>
+    </div>
+    <div class="q-truck">
+        <div class="q-banner">
+            <img class="q-food-img" src="/asset/image/{{vm.selectedCart.companyLogo}}">
+        </div>
+    </div>
+    <div class="c-header">You're So,So Close!</div>
+    <div class="c-pay">
+        <div class="c-left">
+            <div class="c-head">Payment Information</div>
+            <div class="c-card">
+                <div class="c-tabs">
+                    <div class="tab-1">
+                        <div class="tab-txt" ng-click="vm.selectedTab='credit'">Credit Card</div>
+                        <div class="tab-select" ng-if="vm.selectedTab=='credit'"></div>
+                    </div>
+                    <div class="tab-2">
+                        <div class="tab-txt" ng-click="vm.selectedTab='paypal'">PayPal</div>
+                        <div class="tab-select" ng-if="vm.selectedTab=='paypal'"></div>
+                    </div>
+                </div>
+                <div class="card-cont" ng-if="vm.selectedTab=='credit'">
+                    <input class="car-num" ng-model="vm.cardInfo.number" type="number" placeholder="Card Number" />
+                    <input class="car-year" ng-model="vm.cardInfo.year" placeholder="MM/YY" />
+                    <input class="car-cvv" ng-model="vm.cardInfo.cvv" placeholder="CVV" />
+                    <span class="card-icon"></span>
+                </div>
+                <div class="paypal-cont" ng-if="vm.selectedTab=='paypal'">
+                    <input class="car-email" ng-model="vm.paypal.email" type='email' placeholder="Email Address" />
+                    <input class="car-password" ng-model="vm.paypal.email" type='password' placeholder="Password" />
+                </div>
+            </div>
+        </div>
+        <div class="c-right">
+            <div class="c-head">Order Details</div>
+            <div class="c-order">
+                <div class="c-items-cont">
+                    <div class="c-items" ng-repeat="item in vm.selectedMenueItems">
+                        <span class='c-name'>{{item.name}}</span>
+                        <span class="c-close" ng-click="item.quantity=0;vm.updateCart(item);"></span>
+                        <span class="c-cost">${{item.originalCost | number:2}}</span>
+                        <span class="c-add" ng-click="item.quantity=item.quantity +1;vm.updateCart(item);"></span>
+                        <span class="c-quantity">{{item.quantity}}</span>
+                        <span class="c-less" ng-click="item.quantity=item.quantity -1;vm.updateCart(item);" ng-class="{'inactive':(item.quantity <= 1)}"></span>
+                    </div>
+                </div>
+                <div class="c-cost-des">
+                    <div class="c-orig">
+                        <span class="val">${{vm.originalCost| number:2}}</span>
+                        <span class="txt">Original Cost</span>
+
+                    </div>
+                    <div class="c-discount">
+                        <span class="val">-${{vm.discountCost| number:2}}</span>
+                        <span class="txt">Discounts</span>
+                    </div>
+                    <div class="c-tax">
+                        <span class="val">${{vm.serviceTaxCost | number:2}}</span>
+                        <span class="txt">14.5% service tax</span>
+                    </div>
+                </div>
+                <div class="c-total">TOTAL COST &nbsp; : &nbsp; ${{vm.totalCost | number:2}}</div>
+                <button class="c-submit">Proceed to pay</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="q-footer">
+        <div class="q-foot-icons">
+            <div class="q-twitter hvr-pulse "></div>
+            <div class="q-fb hvr-pulse "></div>
+            <div class="q-linkedin hvr-pulse "></div>
+            <div class="q-insta hvr-pulse "></div>
+        </div>
+    </div>
+</div>

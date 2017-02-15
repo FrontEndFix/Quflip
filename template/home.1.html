@@ -1,0 +1,70 @@
+<div class='main-container'>
+    <div class="q-header">
+        <div class="q-nav">
+            <div class="q-home">Home</div>
+            <div class="q-about">About</div>
+            <div class="q-cart">Cart</div>
+        </div>
+        <div class='q-subheader'>
+            <div class="h-1"><span></span></div>
+            <div class="h-2"><span></span></div>
+            <div class="clear-float"></div>
+        </div>
+        <div class='popular-items'>
+            <div class='popular-tile' ng-repeat='item in vm.popuarItems'>
+                <div class='tile-image-{{$index}}'>
+                    <span ng-if="item.isRecommended">USERS RECOMMEND</span>
+                </div>
+                <div class="tile-labels">
+                    <div class='r-top'>
+                        <div class="t-text">{{item.name}}</div>
+                        <div class="t-icons"></div>
+                    </div>
+                    <div class='r-bottom'>{{item.cost | currency}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="clear-float"></div>
+    </div>
+    <div class="q-search">
+        <div class="q-head">Choose your favourite food truck</div>
+        <div class="q-location">
+            <div class="q-l-icon hvr-pulse"></div>
+            <div class="q-l-input">
+                <input type="text" class="style-4" required>
+            </div>
+        </div>
+    </div>
+    <div class="q-items-container">
+        <div class="q-item" ng-repeat="cart in vm.itemList">
+            <div class="q-tile">
+                <img class="q-food-img" src="/asset/image/{{cart.foodImg}}">
+                <div class="q-logo">
+                    <img class="q-company" src="/asset/image/{{cart.companyLogo}}" />
+                </div>
+                <div class="q-name">{{cart.name}}</div>
+                <div class="q-stars">
+                    <input-stars ng-model="cart.stars" max="5"></input-stars>
+                </div>
+                <div class="q-type">{{cart.type}}</div>
+                <div class="q-status" ng-class="{'green':cart.status=='available'}">{{cart.status}}</div>
+            </div>
+
+        </div>
+    </div>
+    <div class="q-subscribe">
+        <div class="q-input-box">
+            <input type="email" />
+            <span class="hvr-pulse"></span>
+        </div>
+    </div>
+    <div class="q-footer">
+        <div class="q-foot-icons">
+            <div class="q-twitter hvr-pulse "></div>
+            <div class="q-fb hvr-pulse "></div>
+            <div class="q-linkedin hvr-pulse "></div>
+            <div class="q-insta hvr-pulse "></div>
+        </div>
+    </div>
+    <div class="clear-float"></div>
+</div>
